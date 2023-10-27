@@ -1,0 +1,20 @@
+{{form_start(f)}}
+{{form_label(f)}}
+{{form_widget(f)}}
+{{form_end(f)}}
+<table border="3">
+    <tr>
+        <td>Author</td>
+        <td>Email</td>
+        <td>nb_books</td>
+    </tr>
+    {% for author in authors %}
+    <tr>
+        <td>{{author.username}}</td>
+        <td>{{author.email}}</td>
+        <td>{{author.nb_books}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+Delete authors whose number of books equals 0 <a href="{{path('deleteFakeauthors')}}">Delete</a>

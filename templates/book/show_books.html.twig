@@ -1,0 +1,37 @@
+{{form_start(f)}}
+{{form_label(f.ref)}}
+{{form_widget(f.ref)}}
+{{form_end(f)}}
+<table border="3">
+    <tr>
+        <td>Title</td>
+        <td>PublicationDate</td>
+        <td>Category</td>
+        <td>Published</td>
+        <td>Author</td>
+        <td>Author number of Books</td>
+        <td>actions</td>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{book.title}}</td>
+        <td>{{book.publicationDate|date('F j, Y')}}</td>{# 'F j, Y': pour afficher date sans temps 00:00 #}
+        <td>{{book.category}}</td>
+        <td>{{book.published}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.author.nb_books}}</td>
+        <td><a href="{{path('edit_book',{'ref':book.ref})}}">edit</a></td>
+    </tr>
+    {% endfor %}
+</table><br>
+Number of books published: {{pb}} <br>
+Number of books unpublished: {{upb}} <br>
+The number of books in the category <strong>Science Fiction</strong> est: {{total}} <br>
+<ul>
+    {% for book in booksb %}
+        <li>{{book.title}}</li>
+        <li>{{book.publicationDate|date('F j, Y')}}</li>
+        <li>{{book.author}}</li>
+        <li>***************</li>
+    {% endfor %}
+</ul>
