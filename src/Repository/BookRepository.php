@@ -55,9 +55,8 @@ class BookRepository extends ServiceEntityRepository
     {
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT COUNT(b) as totalUnpublishedBooks FROM App\Entity\Book b WHERE b.published = true');
-
-        return $query->getSingleScalarResult();
+        return $em->createQuery('SELECT COUNT(b) as totalUnpublishedBooks FROM App\Entity\Book b WHERE b.published = true')
+            ->getSingleScalarResult();
     }
 
     public function calculateUnpublishedBooks()
